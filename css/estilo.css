@@ -1,0 +1,324 @@
+/* REGRA GERAL, PEGA TUDO 
+Altera o comportamento do Box Model visando evitar problemas de tamanho/ espaçamento para todos os elementos*/
+/* INICIAMOS TODOS CSS COM ESSA REGRA */
+* {box-sizing:border-box;}
+
+/* Regra de animação */
+@keyframes cores{
+    from{
+        color: #191970	;
+        transform: translateY(-10px);
+        opacity: 0;
+    } 
+    
+    to{
+        text-shadow: #191970 2px 2px 3px;
+        color: #87CEFA	;
+        /* transform: scale(0.8); */
+    }
+}
+/* Classe para aplicar a animação */
+.animacao-cores{
+    will-change: transform ;
+    animation-name: cores;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-delay: 5s;
+    /* forma abreviada */
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes animesubtitulos {
+    
+    0%  {color: blue	;}
+
+    50% {
+        /* color: ; */
+        transform: translateX(250px);
+        opacity: 0.5;
+    }
+
+    75% {transform: translateX(10px) scale(2);}
+
+    100%{
+        transform: scale(1);
+        color: pink;
+        text-shadow: black 2px 2px 4px;
+    }
+}
+
+.subtitulo-animado{
+    display: inline-block;
+    animation: animesubtitulos 5s infinite
+}
+
+@keyframes anima-imagem { 
+    from{
+        transform: translateX(-100px) rotate(-360deg);
+    }
+
+    to{
+        transform: translate(400px);
+    }
+}
+
+@keyframes anima-texto {
+    from{
+        transform: scale(1);
+        background-color: rgba(0, 0, 0, 0.762);
+    }
+
+    to{
+        transform: scale(1.5);    
+        background-color: rgba(0, 0, 255, 0.825);
+    }
+}
+
+.banner {
+    background-color:(white);
+    border: solid 1px black;
+    width: 90%;
+    margin: auto;
+    position: relative;
+    /* escode o que transborda  */
+    overflow: hidden;
+}
+
+.banner img { 
+    animation-name: anima-imagem;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+.banner h5 {
+    will-change: auto;
+    animation-name: anima-texto;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    text-align: center;
+    font-size: 28px;
+    background-color: black;
+    color: white;
+    margin: 0;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+
+
+/* Regras CSS para o site inteiro */
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background-image: url(../imagens/oriental-tiles.png); */
+    /* background-attachment: fixed; */
+    background-color: #FF3CAC;
+    background-image: linear-gradient(17deg, #FF3CAC 0%, #784BA0 42%, #0b4668 100%);
+
+}
+
+img{max-width: 100%;}
+
+.container{
+    background-color: rgba(255, 255, 255, 0.75);
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgb(235, 235, 140) 0px 0px 20px;
+}
+
+/* EXERCICIO 😴 */
+/* Adicione propriedades para:
+- Efeito de cor de fundo (use 3 cores à sua escolha) 
+- Espaçamento interno de 4%
+- Largura de 90%
+- Bloco centralizado
+- Bordas somente superior e inferior (cor, tamanho, tipo à sua escolha)
+- Sombra com configurações à sua escolha (a cor deve ter um pouco de transparência) */
+.listas{
+    background: linear-gradient(rgb(13, 13, 53), transparent,rgba(236, 236, 117, 0.847));
+    padding: 4%;
+    width: 80%;
+    margin: auto;
+    border-top: rgb(15, 15, 34) 3px solid;
+    border-bottom: rgb(247, 247, 88) 3px solid;
+    box-shadow: rgba(0, 0, 0, 0.8) 4px 2px 15px 7px;
+}
+
+p{
+    font-size: 18;
+    /* Valor absoluto px - fica fixo */
+    line-height: 32px;
+    /* Valor relativo/proporcional (coloca um número, esse número irá multiplicar o tamanho da fonte) */
+    line-height: 1,5;
+}
+
+.centralizar{text-align: center;}
+
+.destaque{
+    background-color: rgba(255, 255, 0, 0.5);
+    padding: 3px;
+    border: solid 2px darkblue;  
+    border-radius: 10px;
+}
+
+figure{
+    margin: 0 auto;  
+    /* resume as quatro linhas abaixo */
+    /* margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto; */
+    text-align: center;
+    max-width: 419px;
+    /* Tornamos o figure a referência para o posicionamento do figcaption */
+    position: relative;
+    transform: scale(0.85) translate(-100px);
+    filter: grayscale();
+    transition: 200ms;
+}
+
+figcaption{
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.536);
+    color:azure ;
+    /* tornando o elemento absoluto.
+    Agora ele está solto, podendo ser colocado em qualquer coordenada*/
+    position: absolute;
+    /* Propriedades de coordenadas:display: top, bottom, left e right */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    bottom: 30px;
+    
+    /* Para forçar figcaption mesmo tamamnho do figure */
+    /* opção 1 */
+    /* width: 100%; */
+
+    /* opção 2 */
+    left: 0;
+    right: 0;
+}
+
+/* Seletor DESCENDENTE */
+figure img{
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+figure:hover{
+    filter: none;
+    transform: scale(1);
+}
+
+/* Seletor Descendente */
+ol li{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+ul li{
+    list-style-type: armenian;
+    color: azure;
+}
+
+ul li a{
+    color: azure;
+    text-decoration: none;
+    text-shadow: black 1px 1px 4px;
+}
+
+/* ul li::marker{
+    content: "⤐ ";
+    font-size: 18px;
+} */
+
+/* ul li:first-child{
+    background-color: black;
+} */
+
+/* ul li:last-child{
+    background-color: red;
+} */
+
+/* ul li:nth-child(4){
+    background-color: blue;
+} */
+
+details summary::marker{content: "🤔";}
+
+details{
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: white;
+    text-align: center;
+}
+
+summary{font-weight: bold;}
+
+details[open] summary::marker{content: "🤗";}
+
+/* Regras para o menu de links */
+
+nav{text-align: center;}
+
+nav a{
+    text-decoration: none;
+    font-weight: bold;
+    background-color: darkblue;
+    color: aliceblue;
+    width: 33.33%;
+    /* Utilizamos o inline-block para permitir definição de tamamnho e ao mesmo tempo manter os elementos lado ao lado*/
+    display: inline-block;
+    font-family: sans-serif;
+    padding: 10px;
+    transition: 0.7s;
+}
+nav a:hover, nav a:focus{
+    
+    background-color: black;
+    color:rgba(255, 255, 0, 0.795);
+    transform: translateY(10px);
+}
+
+.flutuar-imagem{
+    float: left;
+    margin-right: 12px;
+}
+
+p a {
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: black;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 25px;
+    background-image: linear-gradient( 68.6deg,  rgba(79,183,131,1) 14.4%, rgba(254,235,151,1) 92.7% );
+    background-image: linear-gradient(to right, #2b5876 0%, #4e4376  51%, #2b5876  100%)
+    
+}
+
+hr{
+    border: rgba(14, 12, 12, 0.692) ridge ;
+    box-shadow: gray 2px 2px 10px;
+    border-radius: 16px;
+}
+
+h1{
+    font-size: 60px;
+    color: azure;
+    text-align: center;
+    /* display: block; */
+    /* border: solid 1px black ; */
+    /* border-radius: 45px; */
+    /* box-shadow: rgb(255, 255, 255) 0px 0px 8px 8px; */
+    /* background: linear-gradient(90deg, rgba(2, 0, 36, 0.822) 0%, rgba(9,9,121,1) 37%, rgba(0,212,255,1) 100%); */
+}
